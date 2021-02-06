@@ -4,3 +4,12 @@
   -webkit-background-clip: text;
   color: transparent;
 }
+
+.max-width-sm {
+  margin: 0 auto;
+  max-width: 500px;
+}
+
+.mt-10 {
+  margin-top: 10vh;
+}
