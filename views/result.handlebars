@@ -1,0 +1,30 @@
+<div class="container mt-10">
+  <div class="row max-width-sm">
+    <div class="col-12 mt-3">
+      <h3>Success! Please use this link:</h3>
+    </div>
+    <div class="col-12 mt-3">
+      <a href="{{url}}">
+        <input type="text" value="{{url}}" class="form-control-plaintext" id="short-url" readonly>
+      </a>
+    </div>
+    <div class="col-12 mt-3 text-center">
+      <button class="btn btn-primary" id="btn-copy">Copy</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  /* 參考資料：
+   https://www.w3schools.com/howto/howto_js_copy_clipboard.asp */
+  (function () {
+    const btnCopy = document.getElementById("btn-copy")
+    btnCopy.addEventListener('click', function copyText() {
+      const shortUrl = document.getElementById("short-url")
+      shortUrl.select()
+      shortUrl.setSelectionRange(0, 99999) /* For mobile devices */
+      document.execCommand("copy")
+      alert("Copied the URL: " + shortUrl.value)
+    })
+  })()
+</script>

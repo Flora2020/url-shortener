@@ -13,3 +13,16 @@
 .mt-10 {
   margin-top: 10vh;
 }
+
+a {
+  text-decoration: none;
+}
+
+#short-url {
+  color: #0d6efd;
+}
+
+#short-url:hover {
+  cursor: pointer;
+  color: #0b5ed7;
+}
