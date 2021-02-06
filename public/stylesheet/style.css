@@ -1,0 +1,6 @@
+.fa-link {
+  background: linear-gradient(to bottom left, orange, blue);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
