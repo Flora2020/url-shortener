@@ -19,6 +19,16 @@ app.get('/', (req, res) => {
   res.render('index')
 })
 
+app.get('/:short', (req, res) => {
+  const short = req.params.short
+  Url.find({ short: short })
+    .lean()
+    .then((url) => {
+      res.status(301).redirect(url[0].long)
+    })
+    .catch(error => console.log(error))
+})
+
 app.post('/', (req, res) => {
   Url.find()
     .lean()
