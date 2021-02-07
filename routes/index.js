@@ -33,7 +33,12 @@ router.post('/', (req, res) => {
         short: short
       })
         .then(() => {
-          const HOST = 'http://localhost:3000/'
+          let HOST = ''
+          if (process.env.MONGODB_URI) {
+            HOST = 'https://nameless-fjord-14350.herokuapp.com/'
+          } else {
+            HOST = 'http://localhost:3000/'
+          }
           const url = HOST + short
           res.render('result', { url })
         })

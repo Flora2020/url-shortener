@@ -6,7 +6,7 @@ const routes = require('./routes/index.js')
 require('./config/mongodb.js')
 
 const app = express()
-const port = 3000
+const PORT = process.env.PORT || 3000
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
@@ -15,6 +15,6 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(routes)
 
-app.listen(port, () => {
-  console.log(`express is listening on http://localhost:${port}`)
+app.listen(PORT, () => {
+  console.log(`express is listening on http://localhost:${PORT}`)
 })
