@@ -39,7 +39,6 @@ app.post('/', (req, res) => {
         short = randomStringGenerate(5)
       }
       Url.create({
-        id: 1,
         long: req.body.url,
         short: short
       })

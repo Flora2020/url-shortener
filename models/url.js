@@ -1,9 +1,5 @@
 const mongoose = require('mongoose')
 const urlSchema = new mongoose.Schema({
-  id: {
-    type: Number,
-    require: true
-  },
   long: {
     type: String,
     require: true
