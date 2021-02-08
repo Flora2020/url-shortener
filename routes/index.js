@@ -20,25 +20,31 @@ router.get('/:short', (req, res) => {
 })
 
 router.post('/', (req, res) => {
+  const long = req.body.url
   Url.find()
     .lean()
     .then((urls) => {
+      let HOST = ''
+      if (process.env.MONGODB_URI) {
+        HOST = 'https://nameless-fjord-14350.herokuapp.com/'
+      } else {
+        HOST = 'http://localhost:3000/'
+      }
+      const shortenedUrl = urls.find((url) => url.long === long)
+      if (shortenedUrl) {
+        const url = HOST + shortenedUrl.short
+        return res.render('result', { url })
+      }
       let short = randomStringGenerate(5)
       //避免短網址重複
       while (urls.some((url) => url.short === short)) {
         short = randomStringGenerate(5)
       }
       Url.create({
-        long: req.body.url,
+        long: long,
         short: short
       })
         .then(() => {
-          let HOST = ''
-          if (process.env.MONGODB_URI) {
-            HOST = 'https://nameless-fjord-14350.herokuapp.com/'
-          } else {
-            HOST = 'http://localhost:3000/'
-          }
           const url = HOST + short
           res.render('result', { url })
         })
